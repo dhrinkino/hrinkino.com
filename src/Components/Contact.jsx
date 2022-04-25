@@ -11,7 +11,7 @@ class Contact extends Component {
             <div className="flex h-screen justify-center items-center flex-col">
                 <div>
                     <p class="text-4xl font-bold">
-                        Zaujal som ťa? Neváhaj ma kontaktovať
+                        Zaujal som ťa? Neváhaj ma kontaktovať 🤩
                     </p>
                 </div>
                 <div class="w-screen flex justify-center text-6xl space-x-9 > * + *">
