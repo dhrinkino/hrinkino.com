@@ -23,7 +23,6 @@ class App extends Component {
       <AboutMe/>
       <Portfolio/>
       <Contact/>
-      <Footer/>
     </div>
        );
   }
