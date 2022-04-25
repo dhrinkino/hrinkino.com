@@ -4,6 +4,7 @@ import Header from  './Components/Header'
 import AboutMe from './Components/AboutMe'
 import Portfolio from "./Components/Portofilio";
 import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ class App extends Component {
       <AboutMe/>
       <Portfolio/>
       <Contact/>
+      <Footer/>
     </div>
        );
   }
