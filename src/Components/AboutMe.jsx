@@ -24,19 +24,19 @@ class AboutMe extends Component {
                 }
       
                   for (let i=0; i<=100; i++) {
-                    if (i < 60){
+                    if (i <= 60){
                       setProgressBar(i,'react_progress');
                     }
-                    if (i < 80){
+                    if (i <= 80){
                       setProgressBar(i,'vue_progress');
                     }
-                    if (i < 101){
+                    if (i <= 100){
                       setProgressBar(i,'laravel_progress');
                     }
-                    if (i < 70){
+                    if (i <= 70){
                       setProgressBar(i,'python_progress');
                     }
-                    if (i < 60){
+                    if (i <= 60){
                       setProgressBar(i,'aws_progress');
                     }
                  }
