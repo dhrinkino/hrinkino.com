@@ -5,8 +5,59 @@ class App extends Component {
     super(props);
   }
 
-  state = { events: [] }
+  isdiv = null;
 
+  componentDidMount() {
+    $("#react_progress").css({'width': '0%'});
+    $("#vue_progress").css({'width': '0%'});
+    $("#laravel_progress").css({'width': '0%'});
+    $("#python_progress").css({'width': '0%'});
+    $("#aws_progress").css({'width': '0%'});
+
+    $(document).on('scroll', function() {
+      if( $(this).scrollTop() >= $('#progress_trigger').position().top/2 ){
+          if (!this.isdiv){            
+            this.isdiv = !this.isdiv;
+            const setProgressBar = (i,element) => {
+              setTimeout(function() {
+                $("#"+element).css({'width': i+'%'});
+            }, 30 * i);          
+          }
+
+            for (let i=0; i<=100; i++) {
+              if (i < 60){
+                setProgressBar(i,'react_progress');
+              }
+              if (i < 80){
+                setProgressBar(i,'vue_progress');
+              }
+              if (i < 101){
+                setProgressBar(i,'laravel_progress');
+              }
+              if (i < 70){
+                setProgressBar(i,'python_progress');
+              }
+              if (i < 60){
+                setProgressBar(i,'aws_progress');
+              }
+           }
+
+
+          }
+      }
+  });
+
+  }
+
+
+  scrollToAbout = () => {
+    $('html, body').animate({
+      scrollTop: $("#about").offset().top
+    }, 2000);
+  }
+
+
+  state = { events: [] }
   render() { 
     return ( 
     <div>
@@ -18,8 +69,8 @@ class App extends Component {
             <div>
               <p className="text-xl text-white drop-shadow">FullStack Developer, DevOps,  SysAdmin</p>
             </div>
-            <div className="py-4">
-              <a href="#about" className="text-6xl text-white drop-shadow-xl">
+            <div id="progress_trigger" className="py-4">
+              <a onClick={this.scrollToAbout} id="move_to_down" className="text-6xl text-white drop-shadow-xl">
                 <i className="fa fa-angle-down" aria-hidden="true"></i>
               </a>
             </div>
@@ -50,7 +101,7 @@ class App extends Component {
                     <p>React</p>
                     <div className="pr-10 pl-10">
                         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                          <div className="bg-teal-300 h-2.5 rounded-full w-2/3" ></div>
+                          <div id="react_progress" className="bg-teal-300 h-2.5 rounded-full" ></div>
                         </div>
                     </div>
                   </div>
@@ -58,7 +109,7 @@ class App extends Component {
                     <p>VueJS</p>
                     <div className="pr-10 pl-10">
                         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                          <div className="bg-green-600 h-2.5 rounded-full w-4/5" ></div>
+                          <div id="vue_progress" className="bg-green-600 h-2.5 rounded-full w-4/5" ></div>
                         </div>
                     </div>
                   </div>
@@ -66,7 +117,7 @@ class App extends Component {
                     <p>Laravel</p>
                     <div className="pr-10 pl-10">
                         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                          <div className="bg-red-600 h-2.5 rounded-full w-full" ></div>
+                          <div id="laravel_progress" className="bg-red-600 h-2.5 rounded-full w-full" ></div>
                         </div>
                     </div>
                   </div>
@@ -77,7 +128,7 @@ class App extends Component {
                     <p>Python</p>
                     <div className="pr-10 pl-10">
                         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                          <div className="bg-blue-400 h-2.5 rounded-full w-2/3" ></div>
+                          <div id="python_progress" className="bg-blue-400 h-2.5 rounded-full w-2/3" ></div>
                         </div>
                     </div>
                   </div>
@@ -85,30 +136,79 @@ class App extends Component {
                     <p>AWS</p>
                     <div className="pr-10 pl-10">
                         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                          <div className="bg-yellow-500 h-2.5 rounded-full w-1/3" ></div>
+                          <div id="aws_progress" className="bg-yellow-500 h-2.5 rounded-full w-1/3" ></div>
                         </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
       <div className="min-h-screen bg-green-400">
         <div className="py-5 px-5">
-          <p className="text-4xl">Portfólio</p>
+          <p className="text-4xl text-white drop-shadow-md font-bold">Portfólio</p>
         </div>
         <div className="px-10 py-3">
           <div className="grid md:grid-cols-2 ">
-            <div className="md:pl-5 md:pr-5 min-h-screen">
-              <div className="bg-white h-40 w-full rounded-xl p-2 shadow-md border-b-4 border-gray-100">
-                  <h1 className="text-2xl flex justify-center">Canteen UCeMka</h1>
-                  <p></p>
+            <div className="md:pl-5 md:pr-5 py-5">
+              <div className="bg-white w-full rounded-xl p-2 shadow-md border-b-4 border-gray-100">
+                  <h1 className="text-2xl flex justify-center font-bold">Canteen UCeMka</h1>
+                  <p className="text-center">
+                    Aplikácia pre sledovanie jedálneho lístka, pomocou ktorej si môžete sledovať aktuálny jedálny lístok v reštaurácií top-relax.
+                  </p>
+                  <div className="py-2 flex justify-center text-md md:text-2xl font-bold space-x-1 > * + *">
+                        <p>
+                          <a className="text-blue-600 hover:text-black" href="https://canteen.ucemka.sk">🌍 Web</a></p>
+                        <p>
+                          <a className="text-blue-600 hover:text-black" href="https://canteen.ucemka.sk/mobile">📱 Mobilná Aplikácia</a>
+                        </p>
+                  </div>
               </div>
             </div>
-            <div>jejda 2</div>
+            <div>
+            <div className="md:pl-5 md:pr-5 py-5">
+              <div className="bg-white w-full rounded-xl p-2 shadow-md border-b-4 border-gray-100 ">
+                  <h1 className="text-2xl flex justify-center font-bold">BugTrac.io</h1>
+                  <p className="text-center flex justify-center text-xl">
+                    Jednoduchá aplikácia na spravovanie ticketov v systéme.<br></br>
+                  </p>
+                  <div className="py-5 flex justify-center text-md md:text-2xl font-bold space-x-1 > * + *">
+                        <p>
+                          <a className="text-blue-600 hover:text-black" href="https://github.com/Semicol-Dev/bugtracker"><i className="fa fa-github" aria-hidden="true"></i> GitHub</a></p>
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2">
+          <div className="md:pl-5 md:pr-5 py-5 md:py-0">
+                <div className="bg-white w-full rounded-xl p-2 shadow-md border-b-4 border-gray-100 ">
+                    <h1 className="text-2xl flex justify-center font-bold">Network Monitor</h1>
+                    <p className="text-center flex justify-center text-xl">
+                      Projekt v Pythone, skladajúci sa so servera a sondy, pomocou ktorej dokážeme testovať rýchlosť internetovej linky<br></br>
+                    </p>
+                    <div className="py-5 flex justify-center text-md md:text-2xl font-bold space-x-1 > * + *">
+                          <p>
+                            <a className="text-blue-600 hover:text-black" href="https://github.com/dhrinkino/Network-Monitor"><i className="fa fa-github" aria-hidden="true"></i> GitHub</a></p>
+                    </div>
+                </div>
+              </div>
+            <div>
+              <div className="md:pl-5 md:pr-5 py-5 md:py-0">
+                <div className="bg-white w-full rounded-xl p-2 shadow-md border-b-4 border-gray-100 ">
+                    <h1 className="text-2xl flex justify-center font-bold">Discord Rich Plex Presence</h1>
+                    <p className="text-center flex justify-center text-xl">
+                      Malá utilita pre OS Windows, ktorá zoberie údaj aký film sledujeme cez Plex, a pomocou DiscordRPC nám túto informáciu zobrazí pri profile.<br></br>
+                    </p>
+                    <div className="py-5 flex justify-center text-md md:text-2xl font-bold space-x-1 > * + *">
+                          <p>
+                            <a className="text-blue-600 hover:text-black" href="https://github.com/dhrinkino/PlexRichPresence"><i className="fa fa-github" aria-hidden="true"></i> GitHub</a></p>
+                    </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
