@@ -3,6 +3,7 @@ import { Component } from "react";
 import Header from  './Components/Header'
 import AboutMe from './Components/AboutMe'
 import Portfolio from "./Components/Portofilio";
+import Contact from "./Components/Contact";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ class App extends Component {
       <Header/>
       <AboutMe/>
       <Portfolio/>
+      <Contact/>
     </div>
        );
   }
