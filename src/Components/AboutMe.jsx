@@ -10,6 +10,7 @@ class AboutMe extends Component {
         this.loadProgressBar();
     }
 
+    isdiv = false;
     loadProgressBar = () => {
         $(document).on('scroll', function() {
             if( $(this).scrollTop() >= $('#progress_trigger').position().top/2 ){

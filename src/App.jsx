@@ -8,13 +8,9 @@ class App extends Component {
     super(props);
   }
 
-  isdiv = null;
-
   componentDidMount() {
 
   }
-
-
 
 
 
